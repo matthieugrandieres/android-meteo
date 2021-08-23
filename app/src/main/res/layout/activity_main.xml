@@ -5,6 +5,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
+        android:id="@+id/button_Handle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 1"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:layout_marginRight="5dp"
+        android:onClick="buttonHandle1"
+        />
+
+    <Button
+        android:id="@+id/button_Handle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:layout_marginRight="5dp"
+        android:onClick="buttonHandle2"
+        />
+
+    <Button
+        android:id="@+id/button_Handle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favoris"
@@ -13,7 +39,26 @@
         android:backgroundTint="@color/red"
         android:textColor="@color/white"
         android:layout_marginRight="5dp"
+        android:onClick="buttonHandle3"
         />
+
+    <!-- Pas de connexion -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/linearlayoutnotconnexion">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Pas de connexion internet"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+    <!-- /Pas de connexion -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +66,10 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:background="@color/orange"
-        android:gravity="center">
+        android:gravity="center"
+        android:visibility="visible"
+        android:id="@+id/linearlayoutconnexion">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -30,6 +78,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="30dp"
+            android:id="@+id/textviewCity"
             />
 
         <TextView
@@ -61,6 +110,23 @@
                 />
 
         </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/linearlayoutconnexion"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_text_message"
+            android:hint="Votre message.."
+            android:gravity="center"/>
 
     </LinearLayout>
 
