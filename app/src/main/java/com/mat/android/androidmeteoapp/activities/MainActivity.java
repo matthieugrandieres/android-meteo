@@ -1,4 +1,4 @@
-package com.mat.android.androidmeteoapp;
+package com.mat.android.androidmeteoapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mat.android.androidmeteoapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("LE MESSAGE : " + editTextMessage.getText());
         Toast.makeText(this, "Click button 3", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
-        intent.putExtra("msg", editTextMessage.getText());
+        intent.putExtra("msg", editTextMessage.getText().toString());
         startActivity(intent);
     }
 }

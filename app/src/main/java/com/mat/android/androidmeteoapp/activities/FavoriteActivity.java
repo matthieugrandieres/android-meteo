@@ -1,5 +1,6 @@
-package com.mat.android.androidmeteoapp;
+package com.mat.android.androidmeteoapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,17 +10,29 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.TextView;
 
+import com.mat.android.androidmeteoapp.R;
+import com.mat.android.androidmeteoapp.adapters.FavoriteAdapter;
 import com.mat.android.androidmeteoapp.databinding.ActivityFavoriteBinding;
+import com.mat.android.androidmeteoapp.models.City;
+
+import java.util.ArrayList;
 
 public class FavoriteActivity extends AppCompatActivity {
 
     private ActivityFavoriteBinding binding;
     private TextView textViewMessage;
+    private ArrayList<City> mCities;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +57,39 @@ public class FavoriteActivity extends AppCompatActivity {
 
         Log.d("TAG", "FavoriteActivity : onCreate()");
 
-        Intent intent = getIntent();
-        Bundle bundle = getIntent().getExtras();
-        String strMessage = bundle.getString("msg");
 
-        String str = intent.getStringExtra("msg");
-
-
+        /*Bundle extras = getIntent().getExtras();
+        String str = extras.getString("msg");
         textViewMessage = (TextView) findViewById(R.id.text_view_message);
-        textViewMessage.setText("Message :" + str);
+        textViewMessage.setText("Message :" + str);*/
+
+        /**
+         * Init cities list
+         */
+        mCities = new ArrayList<>();
+        City city1 = new City("Fondettes", "Pluie", "12", 1);
+        City city2 = new City("Lyon", "Soleil", "22", 1);
+        City city3 = new City("Nice", "Soleil", "26", 1);
+        City city4 = new City("Brest", "Pluie", "10", 1);
+
+        mCities.add(city1);
+        mCities.add(city2);
+        mCities.add(city3);
+        mCities.add(city4);
+
+        /**
+         * Recycler view
+         */
+        recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
+
+        /**
+         * Adaptaters
+         */
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new FavoriteAdapter(mContext, mCities);
+        recyclerView.setAdapter(mAdapter);
+        
     }
 
     @Override
